@@ -35,9 +35,10 @@ def transfer_matrices(prmps1, prmps2, chi, ti=True):
 def overlap(prmps1, prmps2, chi, ti=True):
     return np.trace(np.linalg.multi_dot(transfer_matrices(prmps1, prmps2, chi, ti=True)))
 
-def rmps_purity(n, k_copies, chi, samples=5000, p=2, ti=False):
-    avg_purity = []
-    for _ in tqdm(samples):  
+def rmps_purity(n, k_copies, chi, samples=5000, p=2, ti=False, quiet=True):
+    avg_purity = 0.0
+    r = tqdm(range(samples)) if not quiet else range(samples)
+    for _ in r:  
         prmps_a = periodic_rmps(n, p, chi, ti=ti)
         prmps_b = periodic_rmps(n, p, chi, ti=ti)
         
