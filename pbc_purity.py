@@ -1,3 +1,7 @@
+###########################
+##### DEPRECATED ##########
+###########################
+
 import numpy as np
 from ncon import *
 from tqdm import tqdm
